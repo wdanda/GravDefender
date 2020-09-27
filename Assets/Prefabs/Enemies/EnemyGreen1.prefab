@@ -114,6 +114,9 @@ MonoBehaviour:
   minTimeBetweenShots: 0.5
   maxTimeBetweenShots: 0.6
   projectileSpeed: 3.5
+  deathVFX: {fileID: 3669184828969251472, guid: 72d7264b80e12294db24af09e946d3d6,
+    type: 3}
+  duarionOfExplosion: 1
 --- !u!60 &8318688048002585941
 PolygonCollider2D:
   m_ObjectHideFlags: 0
