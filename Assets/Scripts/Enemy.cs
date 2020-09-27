@@ -2,21 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour  
+public class Enemy : MonoBehaviour
 {
     [Header("Stats")]
     [SerializeField] protected float health = 100;
-    
+
     [Header("Projectile")]
     [SerializeField] private GameObject laserPrefab = null;
     [SerializeField] private float minTimeBetweenShots = 1f;
     [SerializeField] private float maxTimeBetweenShots = 2f;
     [SerializeField] private float projectileSpeed = 2f;
 
-    [Header("Other")]
+    [Header("FX")]
     [SerializeField] private GameObject deathVFX = null;
     [SerializeField] private float duarionOfExplosion = 1;
-    
+    [SerializeField] private AudioClip deathSound = null;
+    [SerializeField] [Range(0, 1)] private float deathSoundVolume = 0.7f;
+    [SerializeField] private AudioClip shootSound = null;
+    [SerializeField] [Range(0, 1)] private float shootSoundVolume = 0.1f;
+
     private float shotCounter = 0;
 
     void Start()
@@ -43,7 +47,7 @@ public class Enemy : MonoBehaviour
             UpdateShotCounter();
         }
     }
-    
+
     private void UpdateShotCounter()
     {
         shotCounter = Random.Range(minTimeBetweenShots, minTimeBetweenShots + maxTimeBetweenShots);
@@ -58,6 +62,10 @@ public class Enemy : MonoBehaviour
             spawnPosition,
             Quaternion.identity) as GameObject;
         laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
+        if (shootSound)
+        {
+            AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position, shootSoundVolume);
+        }
     }
 
     private void ProcessHit(DamageDealer damageDealer)
@@ -79,5 +87,6 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
         var explosion = Instantiate(deathVFX, transform.position, transform.rotation);
         Destroy(explosion, duarionOfExplosion);
+        AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
     }
 }
