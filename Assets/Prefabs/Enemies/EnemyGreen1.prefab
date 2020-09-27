@@ -108,12 +108,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d7c25318a199146a81b75ff6d05288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
+  health: 300
   laserPrefab: {fileID: 6526179852443629390, guid: f86de251e9b84de4c853e70d31d449d9,
     type: 3}
-  minTimeBetweenShots: 0.7
-  maxTimeBetweenShots: 0.8
-  projectileSpeed: 3
+  minTimeBetweenShots: 0.5
+  maxTimeBetweenShots: 0.6
+  projectileSpeed: 3.5
 --- !u!60 &8318688048002585941
 PolygonCollider2D:
   m_ObjectHideFlags: 0

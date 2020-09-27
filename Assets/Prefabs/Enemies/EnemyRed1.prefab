@@ -111,9 +111,9 @@ MonoBehaviour:
   health: 300
   laserPrefab: {fileID: 6526179852443629390, guid: e05101ba98612574288719f4b5141d6d,
     type: 3}
-  minTimeBetweenShots: 0.8
-  maxTimeBetweenShots: 1.2
-  projectileSpeed: 3
+  minTimeBetweenShots: 0.6
+  maxTimeBetweenShots: 1
+  projectileSpeed: 3.5
 --- !u!60 &-8664786850115848862
 PolygonCollider2D:
   m_ObjectHideFlags: 0
