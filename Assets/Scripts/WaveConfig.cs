@@ -11,6 +11,7 @@ public class WaveConfig : ScriptableObject
     [SerializeField] private float spawnRandomFactor = 0.3f;
     [SerializeField] private int numberOfEnemies = 7;
     [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private float waitBeforeNextWave = 2f;
 
     public GameObject GetEnemyPrefab() => enemyPrefab;
 
@@ -31,5 +32,7 @@ public class WaveConfig : ScriptableObject
     public int GetNumberOfEnemies() => numberOfEnemies;
 
     public float GetMoveSpeed() => moveSpeed;
+
+    public float GetWaitBeforeNextWave() => waitBeforeNextWave;
 
 }
