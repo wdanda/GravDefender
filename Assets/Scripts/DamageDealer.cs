@@ -8,7 +8,7 @@ public class DamageDealer : MonoBehaviour
 
     public int GetDamage() => damage;
 
-    void Hit()
+    public void Hit()
     {
         Destroy(gameObject);
     }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 279908861828620826}
   - component: {fileID: 1129114873290048880}
   - component: {fileID: 3601732837292557113}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyBlue2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,9 +108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d7c25318a199146a81b75ff6d05288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   laserPrefab: {fileID: 6526179852443629390, guid: f86de251e9b84de4c853e70d31d449d9,
     type: 3}
-  health: 100
   minTimeBetweenShots: 1
   maxTimeBetweenShots: 2
   projectileSpeed: 4

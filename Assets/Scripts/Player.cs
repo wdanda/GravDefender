@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour, FiringObject
+public class Player : MonoBehaviour
 {
     [Header("Player Stats")]
     [SerializeField] private bool invencible = false;
@@ -28,22 +28,24 @@ public class Player : MonoBehaviour, FiringObject
         Move();
         Fire();
     }
-    
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        var laser = collider.gameObject.GetComponent<Laser>();
-        if (Utils.IsPlayerLaser(laser)) {
-            return;
-        }
         ProcessHit(collider.gameObject.GetComponent<DamageDealer>());
     }
 
     private void ProcessHit(DamageDealer damageDealer)
     {
+        if (!damageDealer)
+        {
+            Debug.LogWarning("damageDealer null");
+            return;
+        }
         health -= damageDealer.GetDamage();
         if (health <= 0)
         {
-            if (invencible) {
+            if (invencible)
+            {
                 return;
             }
             Destroy(gameObject); // temp
@@ -66,14 +68,12 @@ public class Player : MonoBehaviour, FiringObject
 
     private IEnumerator FireContinuosly()
     {
-        while(true) {
-            var shiftedPosition = transform.position;
-            shiftedPosition.y += 1;
+        while (true)
+        {
             GameObject laser = Instantiate(
                     laserPrefab,
-                    shiftedPosition,
+                    transform.position,
                     Quaternion.identity) as GameObject;
-            laser.GetComponent<Laser>().SetFiringObject(this);
             laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
             yield return new WaitForSeconds(projectileFirePeriod);
         }

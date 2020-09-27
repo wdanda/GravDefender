@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, FiringObject
+public class Enemy : MonoBehaviour  
 {
-    [Header("Enemy Stats")]
-    [SerializeField] private float health = 100;
-
+    [Header("Stats")]
+    [SerializeField] protected float health = 100;
+    
     [Header("Projectile")]
     [SerializeField] private GameObject laserPrefab = null;
     [SerializeField] private float minTimeBetweenShots = 1f;
@@ -23,6 +23,11 @@ public class Enemy : MonoBehaviour, FiringObject
     void Update()
     {
         CountDownAndShoot();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        ProcessHit(collider.gameObject.GetComponent<DamageDealer>());
     }
 
     private void CountDownAndShoot()
@@ -48,25 +53,16 @@ public class Enemy : MonoBehaviour, FiringObject
             laserPrefab,
             spawnPosition,
             Quaternion.identity) as GameObject;
-        laser.GetComponent<Laser>().SetFiringObject(this);
         laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
-    {
-        var laser = collider.gameObject.GetComponent<Laser>();
-        if (!Utils.IsPlayerLaser(laser)) {
-            Debug.Log("IGNORIN TRIGGER, NOT PLAYER LASER");
-            return;
-        }
-        Debug.Log("PLAYER LASER HIT ENEMY!!!");
-        ProcessHit(collider.gameObject.GetComponent<DamageDealer>());
-    }
-
-    
-
     private void ProcessHit(DamageDealer damageDealer)
     {
+        if (!damageDealer)
+        {
+            Debug.LogWarning("damageDealer null");
+            return;
+        }
         health -= damageDealer.GetDamage();
         if (health <= 0)
         {
