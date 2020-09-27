@@ -323,11 +323,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 506476715225891158, guid: 852200c62338ab243b8de4ac2d5ccd8e,
-        type: 3}
-      propertyPath: projectileFirePeriod
-      value: 0.25
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 852200c62338ab243b8de4ac2d5ccd8e, type: 3}
 --- !u!1001 &1702728536067596945
