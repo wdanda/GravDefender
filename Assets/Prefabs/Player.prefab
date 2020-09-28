@@ -98,15 +98,18 @@ MonoBehaviour:
   invencible: 1
   movementSpeed: 10
   screenPadding: 1
-  health: 300
+  health: 200
   laserPrefab: {fileID: 6526179852443629390, guid: af7db7effa75c6c45a94a88fab40ee8b,
     type: 3}
   projectileSpeed: 10
   projectileFirePeriod: 0.1
-  deathSound: {fileID: 8300000, guid: 90e00b5ee51806844b2f28b26b0b8c56, type: 3}
-  deathSoundVolume: 0.7
+  deathVFX: {fileID: 3669184828969251472, guid: 72d7264b80e12294db24af09e946d3d6,
+    type: 3}
+  duarionOfExplosion: 1
+  deathSound: {fileID: 8300000, guid: 2b0f709ee6df29a458be6800e4c7457c, type: 3}
+  deathSoundVolume: 1
   shootSound: {fileID: 8300000, guid: b09aad52aee12b24a8b2a6daa0f45d17, type: 3}
-  shootSoundVolume: 0.1
+  shootSoundVolume: 0.041
 --- !u!60 &1672082098982342588
 PolygonCollider2D:
   m_ObjectHideFlags: 0

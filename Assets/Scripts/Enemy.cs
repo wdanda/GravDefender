@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
 
     [Header("FX")]
     [SerializeField] private GameObject deathVFX = null;
-    [SerializeField] private float duarionOfExplosion = 1;
+    [SerializeField] private float durationOfExplosion = 1;
     [SerializeField] private AudioClip deathSound = null;
     [SerializeField] [Range(0, 1)] private float deathSoundVolume = 0.7f;
     [SerializeField] private AudioClip shootSound = null;
@@ -72,7 +72,6 @@ public class Enemy : MonoBehaviour
     {
         if (!damageDealer)
         {
-            Debug.LogWarning("damageDealer null");
             return;
         }
         health -= damageDealer.GetDamage();
@@ -86,7 +85,7 @@ public class Enemy : MonoBehaviour
     {
         Destroy(gameObject);
         var explosion = Instantiate(deathVFX, transform.position, transform.rotation);
-        Destroy(explosion, duarionOfExplosion);
+        Destroy(explosion, durationOfExplosion);
         AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
     }
 }

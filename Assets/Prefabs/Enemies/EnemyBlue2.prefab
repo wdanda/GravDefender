@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 279908861828620826}
   - component: {fileID: 1129114873290048880}
   - component: {fileID: 3601732837292557113}
+  - component: {fileID: 2387111693715881829}
+  - component: {fileID: -1249438235528298917}
   m_Layer: 10
   m_Name: EnemyBlue2
   m_TagString: Untagged
@@ -162,3 +164,37 @@ PolygonCollider2D:
       - {x: -0.03, y: -0.42}
       - {x: 0.03, y: -0.35}
       - {x: 0.049999997, y: -0.42}
+--- !u!114 &2387111693715881829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4186322482301232298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d471b5bf6f74dc74d89701cedfd1f449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 200
+--- !u!50 &-1249438235528298917
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4186322482301232298}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

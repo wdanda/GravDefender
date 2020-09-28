@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 279908861828620826}
   - component: {fileID: -66554921660248042}
   - component: {fileID: -8664786850115848862}
+  - component: {fileID: 4546611514859160636}
+  - component: {fileID: 2630426227499258920}
   m_Layer: 10
   m_Name: EnemyRed1
   m_TagString: Untagged
@@ -173,3 +175,37 @@ PolygonCollider2D:
       - {x: -0.074999996, y: -0.38}
       - {x: 0.125, y: -0.19}
       - {x: 0.145, y: -0.16}
+--- !u!114 &4546611514859160636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4186322482301232298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d471b5bf6f74dc74d89701cedfd1f449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 200
+--- !u!50 &2630426227499258920
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4186322482301232298}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

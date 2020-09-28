@@ -16,11 +16,13 @@ public class Player : MonoBehaviour
     [SerializeField] private float projectileFirePeriod = 0.1f;
 
     [Header("FX")]
+    [SerializeField] private GameObject deathVFX = null;
+    [SerializeField] private float durationOfExplosion = 1;
     [SerializeField] private AudioClip deathSound = null;
-    [SerializeField] [Range(0,1)] private float deathSoundVolume = 0.7f;
+    [SerializeField] [Range(0, 1)] private float deathSoundVolume = 0.7f;
     [SerializeField] private AudioClip shootSound = null;
-    [SerializeField] [Range(0,1)] private float shootSoundVolume = 0.1f;
-    
+    [SerializeField] [Range(0, 1)] private float shootSoundVolume = 0.1f;
+
 
     float xMin, xMax, yMin, yMax;
     Coroutine firingCoroutine;
@@ -57,15 +59,6 @@ public class Player : MonoBehaviour
             }
             Die();
         }
-    }
-
-    private void Die()
-    {
-        AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
-
-        // todo: show gameover screen
-        Destroy(gameObject);
-        Debug.Log("GAME OVER");
     }
 
     private void Fire()
@@ -112,6 +105,21 @@ public class Player : MonoBehaviour
         var newXPos = Mathf.Clamp(transform.position.x + deltaX, xMin, xMax);
         var newYPos = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
         transform.position = new Vector2(newXPos, newYPos);
+    }
+
+    private void Die()
+    {
+        FindObjectOfType<Level>().LoadGameOver();
+        if (deathSound)
+        {
+            AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
+        }
+        if (deathVFX) {
+            var explosion = Instantiate(deathVFX, transform.position, transform.rotation);
+            Destroy(explosion, durationOfExplosion);
+        }
+        Destroy(gameObject);
+
     }
 
 }
