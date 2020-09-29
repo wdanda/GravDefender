@@ -10,12 +10,21 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private float loadGameDelay = 1.6f;
 
     private ScoreManager scoreManager = null;
+    private HealthManager healthManager = null;
 
     void Start()
     {
         scoreManager = FindObjectOfType<ScoreManager>();
+        healthManager = FindObjectOfType<HealthManager>();
+        if (scoreManager == null)
+        {
+            Debug.LogError("No scoreManager found");
+        }
+        if (healthManager == null)
+        {
+            Debug.LogError("No healthManager found");
+        }
     }
-
 
     public void LoadStartMenu()
     {
@@ -30,9 +39,8 @@ public class LevelManager : MonoBehaviour
                 Camera.main.transform.position,
                 loadGameVolume);
         }
-        if (scoreManager != null) {
-            scoreManager.ResetScore();
-        }
+        scoreManager.ResetScore();
+        healthManager.ResetHealth();
         StartCoroutine(WaitAndLoadScene(1, loadGameDelay));
     }
 
