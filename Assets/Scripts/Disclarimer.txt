@@ -1,0 +1,3 @@
+** Disclaimer **
+
+Most of these scripts should be refactored, however, for the purpose of a Unity learning exercise I'm keeping these classes as is.

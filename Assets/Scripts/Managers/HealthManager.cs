@@ -10,12 +10,11 @@ public class HealthManager : MonoBehaviour
 
     void Awake()
     {
-        SetupSingleton();
         player = FindObjectOfType<Player>();
         if (!player) {
-            Debug.LogError("Unable to find Player object");
             return;
         }
+        SetupSingleton();
         currentHealth = player.GetInitialHealth();
     }
 

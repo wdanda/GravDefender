@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ Disclaimer: this class needs refactoring, bad.
+ */
 public class Player : MonoBehaviour
 {
     [Header("Player Stats")]
@@ -33,7 +36,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         healthManager = FindObjectOfType<HealthManager>();
-        if (healthManager == null ) {
+        if (healthManager == null)
+        {
             Debug.LogError("Unable to find healthManager");
             return;
         }
@@ -75,11 +79,11 @@ public class Player : MonoBehaviour
 
     private void Fire()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") || Input.GetMouseButtonDown(0))
         {
             firingCoroutine = StartCoroutine(FireContinuosly());
         }
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp("Fire1") || Input.GetMouseButtonUp(0))
         {
             StopCoroutine(firingCoroutine);
         }
@@ -112,6 +116,31 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
+        if (Input.GetMouseButton(0))
+        {
+            MoveByMouse();
+        }
+        else
+        {
+            MoveByKeyboard();
+        }
+    }
+
+    private void MoveByMouse()
+    {
+        // Mouse movement
+        var worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        var newXPos = Mathf.Clamp(worldPoint.x, xMin, xMax);
+        var newYPos = Mathf.Clamp(worldPoint.y, yMin, yMax);
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            new Vector2(newXPos, newYPos),
+            Time.deltaTime * movementSpeed);
+    }
+
+    private void MoveByKeyboard()
+    {
+        // Keyboard movement
         var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * movementSpeed;
         var deltaY = Input.GetAxis("Vertical") * Time.deltaTime * movementSpeed;
         var newXPos = Mathf.Clamp(transform.position.x + deltaX, xMin, xMax);
