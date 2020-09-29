@@ -61,11 +61,9 @@ public class Enemy : MonoBehaviour
 
     private void Fire()
     {
-        var spawnPosition = transform.position;
-        spawnPosition.y += -1;
         var laser = Instantiate(
             laserPrefab,
-            spawnPosition,
+            transform.position,
             Quaternion.identity) as GameObject;
         laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
         if (shootSound)
