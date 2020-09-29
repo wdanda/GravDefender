@@ -112,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 500
   hitScore: 25
-  laserPrefab: {fileID: 6526179852443629390, guid: e05101ba98612574288719f4b5141d6d,
+  laserPrefab: {fileID: 6526179852443629390, guid: 2e8e04689619d1b46bdcf749cd4a321b,
     type: 3}
   minTimeBetweenShots: 1
   maxTimeBetweenShots: 2

@@ -98,11 +98,11 @@ MonoBehaviour:
   invencible: 0
   movementSpeed: 10
   screenPadding: 1
-  initialHealth: 300
+  initialHealth: 500
   laserPrefab: {fileID: 6526179852443629390, guid: af7db7effa75c6c45a94a88fab40ee8b,
     type: 3}
   projectileSpeed: 10
-  projectileFirePeriod: 0.1
+  projectileFirePeriod: 0.07
   playerHitVFX: {fileID: 3669184828969251472, guid: 72d7264b80e12294db24af09e946d3d6,
     type: 3}
   deathVFX: {fileID: 3669184828969251472, guid: 72d7264b80e12294db24af09e946d3d6,
